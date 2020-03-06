@@ -1,0 +1,32 @@
+---
+- name: update S.O.
+  yum: name=* state=latest update_cache=yes
+  tags:
+    - packages
+
+- name: install apache
+  yum: name=httpd state=latest
+  tags:
+    - packages
+
+- name: start apache
+  systemd:
+    name: httpd
+    state: started
+  tags:
+    - service
+
+- name: copy index
+  copy:
+    src: index.html
+    dest: /var/www/html/index.html
+  tags:
+    - file
+
+- name: copy img
+  copy:
+    src: multron.gif
+    dest: /var/www/html/multron.gif
+  tags:
+    - file
+...

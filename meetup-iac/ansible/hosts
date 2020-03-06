@@ -1,0 +1,3 @@
+[webservers]
+ ansible_become=yes
+ ansible_become=yes
